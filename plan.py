@@ -20,7 +20,7 @@ class Plan:
         self.init_objects()
 
     def init_objects(self):
-        print ("Se inician los objetos etapa...")
+        print ("Se inician los objetos etapa....")
         self.etapa_c = Etapa(self.date_inicio_ec, self.date_fin_ec, self.parameter.tmin_l_on_ec, self.parameter.tmax_l_on_ec,
                         self.parameter.tmin_l_off_ec, self.parameter.tmax_l_off_ec, self.parameter.hmin_ec,
                         self.parameter.hmax_ec, self.parameter.l_on_ec, self.parameter.h_delta_ec, self.parameter.time_report_delta)
