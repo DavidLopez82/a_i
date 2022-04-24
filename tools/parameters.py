@@ -82,12 +82,14 @@ class Parameters:
         self.save_and_update_values()
 
     def set_temperatura(self, temperatura):
-        self.parser.set('status', 'temperatura', temperatura)
-        self.save_and_update_values()
+        if temperatura is not None:
+            self.parser.set('status', 'temperatura', temperatura)
+            self.save_and_update_values()
 
     def set_humedad(self, humedad):
-        self.parser.set('status', 'humedad', humedad)
-        self.save_and_update_values()
+        if humedad is not None:
+            self.parser.set('status', 'humedad', humedad)
+            self.save_and_update_values()
 
     def set_luces_status(self, l_status):
         self.parser.set('status', 'luces_status', l_status)
@@ -100,13 +102,14 @@ class Parameters:
         self.load_values()
 
     def load_values(self):
+#        try:
         self.temperatura = self.parser.getfloat('status', 'temperatura')
         self.humedad = self.parser.getfloat('status', 'humedad')
         self.v_intractor_status = self.parser.get('status', 'v_intractor_status')
         self.v_extractor_status = self.parser.get('status', 'v_extractor_status')
         self.luces_status = self.parser.getboolean('status', 'luces_status')
         self.l_on_off = self.parser.getboolean('status', 'l_on_off')
-        self.time_report_delta = self.parser.getint('status', 'time_report_delta')
+        self.time_delta_report = self.parser.getint('status', 'time_report_delta')
         self.dht1_pin = self.parser.getint('io', 'dht1_pin')
         self.v_intractor_pin = self.parser.getint('io', 'v_intractor_pin')
         self.v_extractor_pin = self.parser.getint('io', 'v_extractor_pin')
@@ -146,6 +149,9 @@ class Parameters:
         self.etapa_v_active = self.parser.getboolean('parametros de cultivo', 'etapa_v_active')
         self.etapa_c_active = self.parser.getboolean('parametros de cultivo', 'etapa_c_active')
         self.fecha_inicio_plan = self.parser.get('parametros de cultivo', 'fecha_inicio_plan')
+ #       except:
+ #           print ("Error en el archivo parametros\n Cheque los parametros de configuración\n")
+            
 
     def read_values(self):
         self.parser.read('source/parameters.ini')

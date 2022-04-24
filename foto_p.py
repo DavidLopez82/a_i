@@ -5,10 +5,6 @@ from periph import luces
 
 parameter = Parameters()
 
-hora_l_on = datetime.datetime.now()
-hora_l_off = datetime.datetime.now()
-
-
 def check(h_l_on, h_l_off):
     hora_l_on = h_l_on
     hora_l_off = h_l_off
