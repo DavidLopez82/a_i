@@ -1,12 +1,14 @@
-from etapa import *
-from tools.parameters import *
-
+import etapa
+import datetime
+from tools import parameters
+from tools import etapa_status
 
 class Plan:
 
-    parameter = Parameters()
+    parameter = parameters.Parameters()
 
     def __init__(self):
+        self.timedelta = None
         self.etapa_c = None
         self.etapa_v = None
         self.etapa_f = None
@@ -21,13 +23,13 @@ class Plan:
 
     def init_objects(self):
         print ("Se inician los objetos etapa....")
-        self.etapa_c = Etapa(self.date_inicio_ec, self.date_fin_ec, self.parameter.tmin_l_on_ec, self.parameter.tmax_l_on_ec,
+        self.etapa_c = etapa.Etapa(self.date_inicio_ec, self.date_fin_ec, self.parameter.tmin_l_on_ec, self.parameter.tmax_l_on_ec,
                         self.parameter.tmin_l_off_ec, self.parameter.tmax_l_off_ec, self.parameter.hmin_ec,
                         self.parameter.hmax_ec, self.parameter.l_on_ec, self.parameter.h_delta_ec, self.parameter.time_report_delta)
-        self.etapa_v = Etapa(self.date_inicio_ev, self.date_fin_ev, self.parameter.tmin_l_on_ev, self.parameter.tmax_l_on_ev,
+        self.etapa_v = etapa.Etapa(self.date_inicio_ev, self.date_fin_ev, self.parameter.tmin_l_on_ev, self.parameter.tmax_l_on_ev,
                         self.parameter.tmin_l_off_ev, self.parameter.tmax_l_off_ev, self.parameter.hmin_ev,
                         self.parameter.hmax_ev, self.parameter.l_on_ev, self.parameter.h_delta_ev, self.parameter.time_report_delta)
-        self.etapa_f = Etapa(self.date_inicio_ef, self.date_fin_ef, self.parameter.tmin_l_on_ef, self.parameter.tmax_l_on_ef,
+        self.etapa_f = etapa.Etapa(self.date_inicio_ef, self.date_fin_ef, self.parameter.tmin_l_on_ef, self.parameter.tmax_l_on_ef,
                         self.parameter.tmin_l_off_ef, self.parameter.tmax_l_off_ef, self.parameter.hmin_ef,
                         self.parameter.hmax_ef, self.parameter.l_on_ef, self.parameter.h_delta_ef, self.parameter.time_report_delta)
 
@@ -39,6 +41,7 @@ class Plan:
         self.date_fin_ev = datetime.datetime.now()
         self.date_inicio_ef = datetime.datetime.now()
         self.date_fin_ef = datetime.datetime.now()
+        timedelta = None
         if self.parameter.etapa_c_active and self.parameter.etapa_v_active and self.parameter.etapa_f_active:
             if self.parameter.fecha_inicio_plan == "":
                 self.date_inicio_ec = datetime.datetime.now()
@@ -71,6 +74,7 @@ class Plan:
 
     def start_plan(self):
         print("Se inicia plan...")
+        
         if self.parameter.etapa_c_active and self.date_fin_ec > datetime.datetime.now():
             if self.etapa_v.status == etapa_status.not_init or etapa_status.finish and \
                     self.etapa_f.status == etapa_status.not_init or etapa_status.finish:

@@ -4,7 +4,7 @@ from configparser import ConfigParser
 
 
 class Parameters:
-    DHT1_Sensor = Adafruit_DHT.DHT11
+    DHT1_Sensor = Adafruit_DHT.DHT1
     __instance = None
 
     def __new__(cls):

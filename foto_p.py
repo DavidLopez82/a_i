@@ -1,9 +1,9 @@
 from datetime import datetime
 from tools.foto_p_status import foto_p_status
-from tools.parameters import *
+from tools import parameters
 from periph import luces
 
-parameter = Parameters()
+parameter = parameters.Parameters()
 
 hora_l_on = datetime.datetime.now()
 hora_l_off = datetime.datetime.now()

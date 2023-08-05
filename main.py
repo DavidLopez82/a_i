@@ -1,6 +1,6 @@
 import plan
-from tools.parameters import *
-import etapa
+#from tools.parameters import *
+#import etapa
 
 # parameter = Parameters()
 # e = etapa.Etapa(parameter.c_dias_ec, parameter.tmin_l_on_ec, parameter.tmax_l_on_ec, parameter.tmin_l_off_ec,

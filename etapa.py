@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import crtl_clima
 from periph import fans, luces
 import foto_p
-from periph.DHT_Sensor import *
+from periph import DHT_Sensor
 from tools.etapa_status import etapa_status
 from tools.foto_p_status import foto_p_status
 from reporte import write_report
