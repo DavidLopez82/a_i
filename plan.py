@@ -1,7 +1,7 @@
 import etapa
 import datetime
 from tools import parameters
-from tools import etapa_status
+from tools.etapa_status import etapa_status
 
 class Plan:
 
@@ -20,6 +20,7 @@ class Plan:
         self.date_fin_ef = datetime.datetime.now()
         self.ini_time_plan()
         self.init_objects()
+        self.etapa_status = etapa_status
 
     def init_objects(self):
         print ("Se inician los objetos etapa....")
@@ -41,18 +42,18 @@ class Plan:
         self.date_fin_ev = datetime.datetime.now()
         self.date_inicio_ef = datetime.datetime.now()
         self.date_fin_ef = datetime.datetime.now()
-        timedelta = None
+#        datetime.timedelta = None
         if self.parameter.etapa_c_active and self.parameter.etapa_v_active and self.parameter.etapa_f_active:
             if self.parameter.fecha_inicio_plan == "":
                 self.date_inicio_ec = datetime.datetime.now()
             else:
                 self.date_inicio_ec = datetime.datetime.fromisoformat(self.parameter.fecha_inicio_plan[0:10])
             self.parameter.set_fecha_inicio_plan(self.date_fin_ec)
-            self.date_fin_ec = self.date_inicio_ec + timedelta(days=int(self.parameter.c_dias_ec))
+            self.date_fin_ec = self.date_inicio_ec + datetime.timedelta(days=int(self.parameter.c_dias_ec))
             self.date_inicio_ev = self.date_fin_ec
-            self.date_fin_ev = self.date_inicio_ev + timedelta(days=int(self.parameter.c_dias_ev))
+            self.date_fin_ev = self.date_inicio_ev + datetime.timedelta(days=int(self.parameter.c_dias_ev))
             self.date_inicio_ef = self.date_fin_ev
-            self.date_fin_ef = self.date_inicio_ef + timedelta(days=int(self.parameter.c_dias_ef))
+            self.date_fin_ef = self.date_inicio_ef + datetime.timedelta(days=int(self.parameter.c_dias_ef))
         elif not self.parameter.etapa_c_active and self.parameter.etapa_v_active and self.parameter.etapa_f_active:
             if self.parameter.fecha_inicio_plan == "":
                 self.date_inicio_ev = datetime.datetime.now()

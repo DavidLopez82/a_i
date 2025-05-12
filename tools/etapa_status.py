@@ -7,4 +7,3 @@ class etapa_status(enum.Enum):
     finish = 4
     waiting = 5
     not_init = 6
-
