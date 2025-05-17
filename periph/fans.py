@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 from tools import parameters
 
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 parameters = parameters.Parameters()

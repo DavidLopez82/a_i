@@ -18,14 +18,14 @@ def check(h_l_on, h_l_off):
 
     if hora_l_off >= hora_ >= hora_l_on:
         luces.set_luces()
-        return foto_p_status.foto_p_status().running
+        return foto_p_status.foto_p_status['running']
     elif not hora_l_off >= hora_ >= hora_l_on:
         luces.reset_luces()
     elif hora_ >= hora_l_off:
         luces.reset_luces()
-        return foto_p_status.foto_p_status().finish
+        return foto_p_status.foto_p_status['finish']
     else:
-        return foto_p_status.foto_p_status().waiting
+        return foto_p_status.foto_p_status['waiting']
 
 
 def show_times_fp():

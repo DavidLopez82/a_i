@@ -43,7 +43,7 @@ class Etapa:
         while (self.fecha_inicio <= datetime.datetime.now() <= self.fecha_fin) or self.stop_flag:
             if not self.pause_flag:
                 self.status = etapa_status.running
-                self.get_parameters()
+                self.get_parameters_SDHT11()
 #                DHT_Sensor.get_param()
 #                DHT_Sensor.show()
                 self.show_parameters()
@@ -106,8 +106,8 @@ class Etapa:
     def show_foto_periodo(self):
         print("FPhi: {0} FPhf: {1}".format(self.hora_l_on.strftime("%b %d %Y %H:%M:%S"),
                                            self.hora_l_off.strftime("%b %d %Y %H:%M:%S")))
-    def get_parameters(self):
-        h, t = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 12)
+    def get_parameters_SDHT11(self):
+        h, t = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 19)
 #        h, t = Adafruit_DHT.read_retry(parameters.DHT1_Sensor, parameters.dht1_pin)
         if self.parameters.humedad is not None or not "None" and self.parameters.temperatura is not None or not "None":
             print("Sensor is ok, updating values...")
